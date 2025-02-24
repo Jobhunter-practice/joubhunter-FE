@@ -13,6 +13,14 @@ export const callLogin = (username: string, password: string) => {
     return axios.post<IBackendRes<IAccount>>('/api/v1/auth/login', { username, password })
 }
 
+export const callGetAuthURL = (provider: string) => {
+    return axios.get<IBackendRes<string>>('/api/v1/auth/social-login', { params: { provider } })
+}
+
+export const callOAuth2Login = (provider: string, code: string) => {
+    return axios.get<IBackendRes<IAccount>>('/api/v1/auth/social-login/callback', { params: { provider, code } })
+}
+
 export const callFetchAccount = () => {
     return axios.get<IBackendRes<IGetAccount>>('/api/v1/auth/account')
 }
