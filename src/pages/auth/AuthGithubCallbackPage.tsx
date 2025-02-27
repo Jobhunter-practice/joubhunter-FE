@@ -4,9 +4,9 @@ import { useDispatch } from 'react-redux';
 import { setUserLoginInfo } from '@/redux/slice/accountSlide';
 import { callOAuth2Login } from 'config/api';
 import { message, notification } from 'antd';
+import Loading from 'components/share/loading';
 
-const AuthCallbackPage = () => {
-    debugger;
+const AuthGithubCallbackPage = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const dispatch = useDispatch();
@@ -21,7 +21,7 @@ const AuthCallbackPage = () => {
             try {
                 const provider = location.pathname.split('/')[2];
 
-                if (!['google', 'facebook'].includes(provider)) {
+                if (!['google', 'facebook', 'github'].includes(provider)) {
                     throw new Error('Invalid provider');
                 }
 
@@ -68,13 +68,12 @@ const AuthCallbackPage = () => {
     return (
         <div className="flex justify-center items-center min-h-screen">
             <div className="text-center">
-                <h2>Processing Login...</h2>
                 {isProcessing && (
-                    <p>Please wait while we complete your authentication.</p>
+                    <Loading/>
                 )}
             </div>
         </div>
     );
 };
 
-export default AuthCallbackPage;
+export default AuthGithubCallbackPage;

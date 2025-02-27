@@ -7,7 +7,6 @@ import {
 } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import NotFound from 'components/share/not.found';
-import Loading from 'components/share/loading';
 import LoginPage from 'pages/auth/login';
 import RegisterPage from 'pages/auth/register';
 import LayoutAdmin from 'components/admin/layout.admin';
@@ -30,7 +29,8 @@ import ClientJobDetailPage from './pages/job/detail';
 import ClientCompanyPage from './pages/company';
 import ClientCompanyDetailPage from './pages/company/detail';
 import JobTabs from './pages/admin/job/job.tabs';
-import AuthCallbackPage from './pages/auth/AuthCallbackPage';
+import AuthGoogleCallbackPage from './pages/auth/AuthGoogleCallbackPage';
+import AuthGithubCallbackPage from './pages/auth/AuthGithubCallbackPage';
 
 const LayoutClient = () => {
     const [searchTerm, setSearchTerm] = useState('');
@@ -174,7 +174,11 @@ export default function App() {
         },
         {
             path: '/login/google/callback',
-            element: <AuthCallbackPage />,
+            element: <AuthGoogleCallbackPage />,
+        },
+        {
+            path: '/login/github/callback',
+            element: <AuthGithubCallbackPage />,
         },
 
         {

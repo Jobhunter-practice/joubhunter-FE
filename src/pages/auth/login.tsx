@@ -15,6 +15,7 @@ import { useDispatch } from 'react-redux';
 import { setUserLoginInfo } from '@/redux/slice/accountSlide';
 import { useAppSelector } from '@/redux/hooks';
 import GoogleButton from '@/components/ui/google-button';
+import GithubButton from '@/components/ui/github-button';
 import styles from 'styles/auth.module.scss';
 
 const { Title, Text } = Typography;
@@ -66,17 +67,10 @@ const LoginPage = () => {
         }
     };
 
-    const handleSocialLogin = async (provider: 'google' | 'facebook') => {
+    const handleSocialLogin = async (provider: string) => {
         try {
-            debugger;
             const res = await callGetAuthURL(provider);
             if (res?.data) {
-                // Store the original callback URL if any
-                const params = new URLSearchParams(location.search);
-                const callback = params.get('callback');
-                if (callback) {
-                    sessionStorage.setItem('oauth_callback_url', callback);
-                }
                 window.location.href = res.data;
             }
         } catch (error) {
@@ -100,10 +94,24 @@ const LoginPage = () => {
                             Đăng Nhập
                         </Title>
                         <Divider />
-                        <GoogleButton
-                            onClick={() => handleSocialLogin('google')}
-                        />
+                        <div
+                            style={{
+                                display: 'flex',
+                                flexDirection: 'row',
+                                gap: '10px',
+                                justifyContent: 'center',
+                            }}
+                        >
+                            <GoogleButton
+                                onClick={() => handleSocialLogin('google')}
+                            />
+                            <GithubButton
+                                onClick={() => handleSocialLogin('github')}
+                            />
+                        </div>
+
                         <Divider />
+            
                         <Form<LoginFormValues>
                             name="login"
                             layout="vertical"
