@@ -20,10 +20,11 @@ export const SKILLS_LIST =
 
 export const LOCATION_LIST =
     [
-        { label: "Hà Nội", value: "HANOI" },
-        { label: "Hồ Chí Minh", value: "HOCHIMINH" },
-        { label: "Đà Nẵng", value: "DANANG" },
-        { label: "Others", value: "OTHER" },
+        { label: "MOUNTAIN VIEW", value: "MOUNTAIN VIEW" },
+        { label: "CUPERTINO", value: "CUPERTINO" },
+        { label: "SEATTLE", value: "SEATTLE" },
+        { label: "MENLO PARK", value: "MENLO PARK" },
+        { label: "LOS GATOS", value: "LOS GATOS" },
     ];
 
 export const nonAccentVietnamese = (str: string) => {

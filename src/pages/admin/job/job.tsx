@@ -73,7 +73,7 @@ const JobPage = () => {
             sorter: true,
             render(dom, entity, index, action, schema) {
                 const str = "" + entity.salary;
-                return <>{str?.replace(/\B(?=(\d{3})+(?!\d))/g, ',')} đ</>
+                return <>{str?.replace(/\B(?=(\d{3})+(?!\d))/g, ',')} $</>
             },
         },
         {

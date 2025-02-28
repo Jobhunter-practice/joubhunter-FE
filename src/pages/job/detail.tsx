@@ -16,13 +16,12 @@ dayjs.extend(relativeTime)
 const ClientJobDetailPage = (props: any) => {
     const [jobDetail, setJobDetail] = useState<IJob | null>(null);
     const [isLoading, setIsLoading] = useState<boolean>(false);
-
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-
+    
     let location = useLocation();
     let params = new URLSearchParams(location.search);
     const id = params?.get("id"); // job id
-
+    
     useEffect(() => {
         const init = async () => {
             if (id) {
@@ -67,7 +66,7 @@ const ClientJobDetailPage = (props: any) => {
                                 </div>
                                 <div className={styles["salary"]}>
                                     <DollarOutlined />
-                                    <span>&nbsp;{(jobDetail.salary + "")?.replace(/\B(?=(\d{3})+(?!\d))/g, ',')} đ</span>
+                                    <span>&nbsp;{(jobDetail.salary + "")?.replace(/\B(?=(\d{3})+(?!\d))/g, ',')} $</span>
                                 </div>
                                 <div className={styles["location"]}>
                                     <EnvironmentOutlined style={{ color: '#58aaab' }} />&nbsp;{getLocationName(jobDetail.location)}

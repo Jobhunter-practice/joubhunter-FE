@@ -259,7 +259,7 @@ const ViewUpsertJob = (props: any) => {
                                     rules={[{ required: true, message: 'Vui lòng không bỏ trống' }]}
                                     placeholder="Nhập mức lương"
                                     fieldProps={{
-                                        addonAfter: " đ",
+                                        addonAfter: " $",
                                         formatter: (value) => `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ','),
                                         parser: (value) => +(value || '').replace(/\$\s?|(,*)/g, '')
                                     }}
